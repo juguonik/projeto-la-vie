@@ -1,7 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const routes = require("./src/routes")
+<<<<<<< HEAD
 const db = require("./src/database")
+=======
+const db = require("./src/database");
+>>>>>>> welton
 
 const app = express();
 
