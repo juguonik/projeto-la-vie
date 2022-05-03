@@ -10,7 +10,7 @@ CREATE TABLE psicologos(
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(100),
   email VARCHAR(100),
-  senha VARCHAR(24),
+  senha VARCHAR(100),
   apresentacao VARCHAR(100)
 );
 
