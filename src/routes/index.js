@@ -7,7 +7,7 @@ const routes = express.Router();
 
 
 routes.get ('/psicologos', psicologosController.listarPsicologos);
-routes.get ('/psicologos/:id');
+routes.get ('/psicologos/:id', psicologosController.filtrarPsicologosId);
 routes.post ('/psicologos', );
 routes.put ('/psicologos/:id');
 routes.delete('/produtos/:id', );
