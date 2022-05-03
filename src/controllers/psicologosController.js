@@ -1,53 +1,34 @@
 const Psicologos = require('../models/Psicologos');
 
 const psicologosController = {
-    listarPsicologos: async (req, res) => {
-        const listaDePsicologos = await Psicologos.findAll({
-            });
+        listarPsicologos: async (req, res) => {
+            try{
+            const listaDePsicologos = await Psicologos.findAll({});
 
-        res.status(200).json(listaDePsicologos);
+            res.status(200).json(listaDePsicologos);
+            }
+            catch (error) {
+                return res.status(500).json('Erro');
+            };
 
-    },
+        },
+
+        async filtrarPsicologosId(req, res){
+            try {
+                 const listaDePsicologos = await Psicologos.findByPk(req.params.id);
+            
+                 if (listaDePsicologos !== null) res.status(200).json(listaDePsicologos)
+                else res.status(404).json('Id não encontrado');
+               
+            }
+            catch (error) {
+                return res.status(500).json('Erro');
+            }
+
+        },
 
 
-
-
-//     async cadastrarPsicologo(req, res) {
-//         const {
-//             nome,
-//             preco,
-//             quantidade,
-//             fabricante_id,
-//             categoria_id,
-//         } = req.body;
-//         const novoProduto = await Produtos.create({
-//             nome,
-//             preco,
-//             quantidade,
-//             fabricante_id,
-//         });
-
-//         const categoria = await Categorias.findByPk(categoria_id);
-
-//         await novoProduto.setCategorias(categoria);
         
-//         res.json(novoProduto);
-//     },
+    };
 
-//     async deletarProduto(req, res) {
-//         const {
-//             id
-//         } = req.params;
-
-//         await Produtos.destroy({
-//             where: {
-//                 id,
-//             },
-//         });
-
-//         res.json('Produto deletado');
-//     },
-
-};
-
-module.exports = psicologosController;
+        module.exports = psicologosController;
