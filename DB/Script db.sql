@@ -2,16 +2,16 @@ create database lavie;
 use lavie;
 CREATE TABLE pacientes(
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(100),
-  email VARCHAR(100),
+  nome VARCHAR(256),
+  email VARCHAR(256),
   idade DATE
 );
 CREATE TABLE psicologos(
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(100),
-  email VARCHAR(100),
-  senha VARCHAR(100),
-  apresentacao VARCHAR(100)
+  nome VARCHAR(256),
+  email VARCHAR(256),
+  senha VARCHAR(256),
+  apresentacao VARCHAR(256)
 );
 
 CREATE TABLE atendimentos(
@@ -21,7 +21,7 @@ CREATE TABLE atendimentos(
   constraint paciente_psicologos foreign key (paciente_id) references pacientes(id),
   constraint psicologos_paciente foreign key (psicologos_id) references psicologoss(id),
   data_atendimento DATE,
-  observacao VARCHAR(100)  
+  observacao VARCHAR(256)  
   );
   
 
