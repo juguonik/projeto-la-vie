@@ -12,21 +12,31 @@ const Atendimento = db.define(
             autoIncrement: true,
         },
         data_atendimento: {
-            TYPE: DataTypes.DATE,
+            type: DataTypes.DATE,
         },
         observacao: {
-            type: DataTypes.VARCHAR(100),
+            type: DataTypes.STRING,
         },
-    },
+        paciente_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: Paciente,
+                key: 'id'
+            },
+        psicologo_id: {
+                type: DataTypes.INTEGER,
+                references: {
+                    model: Psicologo,
+                    key: 'id'
+                },
+    }
+}
+},
     {
-        tableName: "Atendimento",
+        tableName: "atendimentos",
         timestamps: false,
     }
 );
 
-Atendimento.hasMany(Psicologo, Paciente, {
-    constraint: true,
-    foreignKey: "idAtendimento",
-})
 
 module.exports = Atendimento;

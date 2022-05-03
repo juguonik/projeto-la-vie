@@ -10,20 +10,20 @@ const Psicologo = db.define(
             autoIncrement: true,
         },
         nome: {
-            TYPE: DataTypes.VARCHAR(100),
+            type: DataTypes.STRING,
         },
         email: {
-            type: DataTypes.VARCHAR(100),
+            type: DataTypes.STRING,
         },
         senha: {
-            type: DataTypes.VARCHAR(24),
+            type: DataTypes.STRING,
         },
         apresentacao: {
-            type: DataTypes.VARCHAR(100)
+            type: DataTypes.STRING
         },
     },
     {
-        tableName: "Psicologo",
+        tableName: "psicologo",
         timestamps: false,
     }
 );

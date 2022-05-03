@@ -10,17 +10,17 @@ const Paciente = db.define(
             autoIncrement: true,
         },
         nome: {
-            TYPE: DataTypes.VARCHAR(100),
+            type: DataTypes.STRING,
         },
         email: {
-            type: DataTypes.VARCHAR(100),
+            type: DataTypes.STRING,
         },
         idade: {
             type: DataTypes.DATE,
         }
     },
     {
-        tableName: "Paciente",
+        tableName: "pacientes",
         timestamps: false,
     }
 );
