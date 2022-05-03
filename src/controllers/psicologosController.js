@@ -1,4 +1,5 @@
 const Psicologos = require('../models/Psicologos');
+const bcrypt = require ('bcryptjs');
 
 const psicologosController = {
     listarPsicologos: async (req, res) => {
@@ -39,11 +40,11 @@ const psicologosController = {
             return res.status(400).json({
                 message: "Erro na requisição. Todas as informações são obrigatórias!"
             })
-
+        const novaSenha = bcrypt.hashSync(senha,5)    
         const novoPsicologo = await Psicologos.create({
             nome,
             email,
-            senha,
+            senha:novaSenha,
             apresentacao,
         });
 
