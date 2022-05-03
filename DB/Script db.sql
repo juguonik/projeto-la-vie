@@ -17,9 +17,9 @@ CREATE TABLE psicologos(
 CREATE TABLE atendimentos(
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
   paciente_id int not null,
-  psicologo_id int not null,
-  constraint paciente_psicologo foreign key (paciente_id) references pacientes(id),
-  constraint psicologo_paciente foreign key (psicologo_id) references psicologos(id),
+  psicologos_id int not null,
+  constraint paciente_psicologos foreign key (paciente_id) references pacientes(id),
+  constraint psicologos_paciente foreign key (psicologos_id) references psicologoss(id),
   data_atendimento DATE,
   observacao VARCHAR(100)  
   );
