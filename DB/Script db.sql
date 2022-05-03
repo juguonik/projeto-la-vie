@@ -6,7 +6,7 @@ CREATE TABLE pacientes(
   email VARCHAR(100),
   idade DATE
 );
-CREATE TABLE psicologoss(
+CREATE TABLE psicologos(
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(100),
   email VARCHAR(100),
