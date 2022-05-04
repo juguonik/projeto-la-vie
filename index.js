@@ -1,11 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const routes = require("./src/routes")
-const db = require("./src/database")
+const db = require("./src/database/index")
 
 const app = express();
 
-db.hasConection();
+db.hasConnection();
 
 app.use(express.json());
 app.use(routes);

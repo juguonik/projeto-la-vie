@@ -17,7 +17,7 @@ routes.delete('/produtos/:id', );
 
 routes.get("/atendimentos", AtendimentoController.listar);
 routes.get("/atendimentos/:id", AtendimentoController.filtrarAtendimentosId);
-// routes.post ('/atendimentos', AtendimentoController.atendimentoInfo);
+routes.post ('/atendimentos/', AtendimentoController.cadastroAtendimento);
 
 module.exports = routes;
 
