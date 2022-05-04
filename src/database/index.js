@@ -1,36 +1,33 @@
+const Sequelize = require("sequelize");
 
-const sequelize = require ('sequelize');
 
-const DB_NAME = 'lavie';
-const DB_USER = 'root';
-const DB_PASS = 'Joao@522pedro';
+const DB_NAME = "lavie";
+const DB_USER = "root";
+const DB_PASS = "1234";
 const DB_CONFIG = {
-    dialect: 'mysql',
-    host: 'localhost',
-    port: 3306
+  dialect: "mysql",
+  host: "localhost",
+  port: 3306
 };
 
 let db = {};
 
 try {
-    db = new sequelize(DB_NAME, DB_USER, DB_PASS, DB_CONFIG);
+  db = new Sequelize(DB_NAME, DB_USER, DB_PASS, DB_CONFIG);
 } catch (error) {
-    console.error('Erro ao tentar uma conexão com o banco de dados');
 
+  console.log(`Falha ao conectar Banco de dados! ${error}`);
 }
 
-async function hasConnection(){
-    try{
-        await db.authenticate();
-        console.log('Banco de dados conectado');
-    } catch (error) {
-        console.error(error);
-        console.error('Erro ao se conectar ao banco de dados');
-    }
+async function hasConection(){
+  try {
+    await db.authenticate();
+    console.log("BANCO DE DADOS CONECTADO!");
+  } catch (error) {
+    console.log(`FALHA NA CONEXAO COM BANCO DE DADOS ${error}`);
+  }
 };
 
-Object.assign(db, {
-    hasConnection,
-});
+Object.assign(db, { hasConection });
 
 module.exports = db;
