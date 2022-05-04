@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 
+
 const DB_NAME = "lavie";
 const DB_USER = "root";
 const DB_PASS = "1234";
@@ -14,6 +15,7 @@ let db = {};
 try {
   db = new Sequelize(DB_NAME, DB_USER, DB_PASS, DB_CONFIG);
 } catch (error) {
+
   console.log(`Falha ao conectar Banco de dados! ${error}`);
 }
 

@@ -1,4 +1,4 @@
-const Atendimento = require("../models/atendimento");
+const Atendimento = require("../models/Atendimentos");
 
 const AtendimentoController = { 
     async listar(req, res) {
@@ -17,7 +17,25 @@ const AtendimentoController = {
         catch(error) {
             return res.status(500).json("erro");
         }
+    },
+
+    async cadastroAtendimento(req, res) {
+        const {
+            paciente_id,
+            data_atendimento,
+            observacao,
+        } = req.body;
+
+        const novoAtendimento = await Atendimento.create({
+            paciente_id,
+            data_atendimento,
+            observacao,
+        });
+
+        if (!paciente_id | !data_atendimento | !observacao)
+        return res.status(400).json({message: "Erro na requisição. Todas as informações são obrigatórias!"})
     }
+
 };
 
 
