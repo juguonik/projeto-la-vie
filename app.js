@@ -1,4 +1,5 @@
 const express = require ('express');
+const handleError = require("./src/middlewares/handleError");
 const routes = require ('./src/routes');
 const bodyParser = require('body-parser')
 
@@ -11,8 +12,7 @@ const app = express();
 db.hasConnection();
 
 app.use(express.json());
-app.use(bodyParser.json())
-
+app.use(handleError);
 app.use(routes);
 
 
