@@ -19,7 +19,7 @@ try {
   console.log(`Falha ao conectar Banco de dados! ${error}`);
 }
 
-async function hasConection(){
+async function hasConnection(){
   try {
     await db.authenticate();
     console.log("BANCO DE DADOS CONECTADO!");
@@ -28,6 +28,6 @@ async function hasConection(){
   }
 };
 
-Object.assign(db, { hasConection });
+Object.assign(db, { hasConnection });
 
 module.exports = db;
