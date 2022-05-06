@@ -8,26 +8,26 @@ const AuthController = {
     async login (req, res){
         const { email, senha} = req.body    
 
-        const Psicologo = await Psicologos.findOne({
+        const psicologo = await Psicologos.findOne({
             where:{
                 email,
             }
         });
 
-        if(!Psicologo){
+        if(!psicologo){
             return res.status(400).json("Email não cadastrado")
         }
 
-        if(!bcrypt.compareSync (senha, Psicologo.senha)){
+        if(!bcrypt.compareSync (senha, psicologo.senha)){
             return res.status(401).json("Senha invalida!!")
         }
 
 
         const token = jwt.sign(
             {
-                Id: Psicologos.id,
-                email:Psicologos.email,
-                nome:Psicologos.nome
+                id: psicologo.id,
+                email:psicologo.email,
+                nome:psicologo.nome
             },
             secret.key
         )
