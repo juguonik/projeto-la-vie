@@ -25,10 +25,9 @@ const AtendimentoController = {
         const token = req.auth.id;
         console.log(token);
         try {
-          console.log(req.body)
           const { paciente_id, data_atendimento, observacao } = req.body;
-          console.log(typeof paciente_id)
           const novoAtendimento = await Atendimento.create({
+            psicologo_id: token,
             paciente_id,
             data_atendimento,
             observacao,
@@ -36,7 +35,6 @@ const AtendimentoController = {
           });
           return res.status(201).json(novoAtendimento);
         } catch (error) {
-          console.log (error.toString())
           res.status(400).json("Não foi possivel cadastrar o atendimento");
         }
       },
