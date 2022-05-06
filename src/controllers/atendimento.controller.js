@@ -1,4 +1,6 @@
 const Atendimento = require("../models/Atendimentos");
+const Pacientes = require("../models/Pacientes")
+const Psicologos = require("../models/Psicologos")
 
 const AtendimentoController = { 
     async listar(req, res) {
@@ -19,24 +21,27 @@ const AtendimentoController = {
         }
     },
 
-    async cadastroAtendimento(req, res) {
-        const {
+    async cadastrarAtendimento(req, res) {
+        const token = req.auth.id;
+        console.log(token);
+        try {
+          console.log(req.body)
+          const { paciente_id, data_atendimento, observacao } = req.body;
+          console.log(typeof paciente_id)
+          const novoAtendimento = await Atendimento.create({
             paciente_id,
             data_atendimento,
             observacao,
-        } = req.body;
-
-        const novoAtendimento = await Atendimento.create({
-            paciente_id,
-            data_atendimento,
-            observacao,
-        });
-
-        if (!paciente_id | !data_atendimento | !observacao)
-        return res.status(400).json({message: "Erro na requisição. Todas as informações são obrigatórias!"})
-    }
-
-};
+            psicologo_id: token,
+          });
+          return res.status(201).json(novoAtendimento);
+        } catch (error) {
+          console.log (error.toString())
+          res.status(400).json("Não foi possivel cadastrar o atendimento");
+        }
+      },
+    };
+    
 
 
 
